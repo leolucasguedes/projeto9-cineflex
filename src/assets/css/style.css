@@ -1,13 +1,8 @@
 *{
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
 body{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
 }
