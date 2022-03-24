@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 import { Main, DivCima, SelecioneH1, DivImagem, Cartaz } from "./style.js";
@@ -35,7 +36,9 @@ function TelaInicial() {
           const { id, title, posterURL } = filme;
           return (
             <DivImagem key={id}>
-              <Cartaz src={posterURL} alt={title} />
+               <Link to={`/filme/${id}/showtimes`}>
+                 <Cartaz src={posterURL} alt={title} />
+               </Link>
             </DivImagem>
           );
         })}

@@ -13,7 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<TelaInicial />}></Route>
-        <Route path="/filme" element={<Filme />}></Route>
+        <Route path="/filme/:filmeId/showtimes" element={<Filme />}></Route>
         <Route path="/sessao" element={<Sessao />}></Route>
         <Route path="/sucesso" element={<Sucesso />}></Route>
       </Routes>
