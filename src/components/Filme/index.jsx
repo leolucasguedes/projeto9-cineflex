@@ -15,17 +15,17 @@ import {
 
 function Filme() {
   const { filmeId } = useParams();
-  const [sessoes, setSessoes] = useState({});
+  const [sessoes, setSessoes] = useState([]);
   useEffect(() => {
     const promise = axios.get(
       `https://mock-api.driven.com.br/api/v5/cineflex/movies/${filmeId}/showtimes`
     );
     promise.then((resposta) => {
-      const { data } = resposta;
+      const { days } = resposta.data;
 
-      setSessoes(data);
+      setSessoes(days);
     });
-  }, []);
+  }, [filmeId]);
   return (
     <>
       <DivCima>
@@ -44,16 +44,15 @@ function Filme() {
           </Horarios>
         </DivSessao>
         {sessoes.map((sessao) => {
-          const { days } = sessao;
-          const { id, weekday, date, showtimes } = days;
-          const { name } = showtimes;
+          const { id, weekday, date, showtimes } = sessao;
           return (
             <DivSessao key={id}>
               <Dia>{weekday} - {date}</Dia>
               <Horarios>
                 {showtimes.map(showtime => {
+                  const { name } = showtime;
                   return (
-                    <DivHorario>
+                    <DivHorario key={id + name}>
                       <Hora>{name}</Hora>
                     </DivHorario>
                  );
