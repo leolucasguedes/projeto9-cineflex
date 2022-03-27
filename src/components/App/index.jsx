@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Header from './../Header'
-import TelaInicial from './../TelaInicial';
-import Filme from './../Filme';
-import Sessao from './../Sessao';
-import Sucesso from './../Sucesso';
-
+import Header from "./../Header";
+import TelaInicial from "./../TelaInicial";
+import Filme from "./../Filme";
+import Sessao from "./../Sessao";
+import Sucesso from "./../Sucesso";
 
 function App() {
   return (

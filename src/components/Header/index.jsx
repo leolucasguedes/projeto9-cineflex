@@ -1,10 +1,10 @@
-import { Topo, Titulo } from "./style.js";
+import { Topo } from "./style.js";
 
 function Header() {
   return (
-      <Topo>
-        <Titulo>CINEFLEX</Titulo>
-      </Topo>
+    <Topo>
+      <h1>CINEFLEX</h1>
+    </Topo>
   );
 }
 

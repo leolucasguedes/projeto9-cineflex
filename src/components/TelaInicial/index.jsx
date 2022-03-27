@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-import { Main, DivCima, SelecioneH1, DivImagem, Cartaz } from "./style.js";
-
-import Filme from "./../../assets/images/batman.jpg";
+import { Main, DivCima, DivImagem } from "./style.js";
 
 function TelaInicial() {
   const [filmes, setFilmes] = useState([]);
@@ -20,25 +18,20 @@ function TelaInicial() {
     });
     requisicao.catch((err) => console.log(err.resposta));
   }, []);
+
   return (
     <>
       <DivCima>
-        <SelecioneH1>Selecione o filme</SelecioneH1>
+        <h1>Selecione o filme</h1>
       </DivCima>
       <Main>
-        <DivImagem>
-          <Cartaz src={Filme} alt="Filme em Cartaz" />
-        </DivImagem>
-        <DivImagem>
-          <Cartaz src={Filme} alt="Filme em Cartaz" />
-        </DivImagem>
         {filmes.map((filme) => {
           const { id, title, posterURL } = filme;
           return (
             <DivImagem key={id}>
-               <Link to={`/filme/${id}/showtimes`}>
-                 <Cartaz src={posterURL} alt={title} />
-               </Link>
+              <Link to={`/filme/${id}/showtimes`}>
+                <img src={posterURL} alt={title} />
+              </Link>
             </DivImagem>
           );
         })}
