@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 import {
@@ -11,21 +12,26 @@ import {
   Horarios,
   DivHorario,
   Hora,
+  Footer,
 } from "./style.js";
 
 function Filme() {
   const { filmeId } = useParams();
   const [sessoes, setSessoes] = useState([]);
+  const [infos, setInfos] = useState({});
   useEffect(() => {
     const promise = axios.get(
       `https://mock-api.driven.com.br/api/v5/cineflex/movies/${filmeId}/showtimes`
     );
     promise.then((resposta) => {
-      const { days } = resposta.data;
+      const { days, title, posterURL } = resposta.data;
 
       setSessoes(days);
+      setInfos({title, posterURL});
     });
   }, [filmeId]);
+  //console.log(infos);
+  const { title, posterURL } = infos;
   return (
     <>
       <DivCima>
@@ -44,23 +50,31 @@ function Filme() {
           </Horarios>
         </DivSessao>
         {sessoes.map((sessao) => {
-          const { id, weekday, date, showtimes } = sessao;
+          const { weekday, date, showtimes } = sessao;
           return (
-            <DivSessao key={id}>
-              <Dia>{weekday} - {date}</Dia>
+            <DivSessao key={weekday + date}>
+              <Dia>
+                {weekday} - {date}
+              </Dia>
               <Horarios>
-                {showtimes.map(showtime => {
-                  const { name } = showtime;
+                {showtimes.map((showtime) => {
+                  const { id, name } = showtime;
                   return (
-                    <DivHorario key={id + name}>
+                    <Link to={`/sessao/${id}/seats`}>
+                     <DivHorario key={id + name}>
                       <Hora>{name}</Hora>
-                    </DivHorario>
-                 );
+                     </DivHorario>
+                    </Link>
+                  );
                 })}
               </Horarios>
             </DivSessao>
           );
         })}
+        <Footer>
+          <img src={posterURL} alt={title}></img>
+          <p>{title}</p>
+        </Footer>
       </Main>
     </>
   );

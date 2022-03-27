@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DivCima = styled.div`
-    width: 100%;
+    width: 375px;
     height: 102px;
     display: flex;
     justify-content: center;
@@ -20,14 +20,14 @@ export const SelecioneH1 = styled.h1`
 `;
 
 export const Main = styled.main`
-   width: 100%;
+   width: 375px;
    height: 810px;
    display: flex;
    flex-wrap: wrap;
 `;
 
 export const DivSessao = styled.div`
-   width: 100%;
+   width: 375px;
    height: 123px;
    display: flex;
    justify-content: center;
@@ -45,7 +45,7 @@ export const Dia = styled.h1`
 `;
 
 export const Horarios = styled.div`
-   width: 100%;
+   width: 375px;
    height: 45px;
    display: flex;
    justify-content: center;
@@ -71,4 +71,35 @@ export const Hora = styled.h1`
    letter-spacing: 2%;
    text-align: center;
    color: #FFFFFF;
+`;
+
+export const Footer = styled.footer`
+   width: 100%;
+   height: 117px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #DFE6ED;
+   border: solid 1px #9EADBA
+   position: fixed;
+   top: 0;
+   right: 0;
+   left: 0;
+   z-index: 1;
+
+   img{
+      width: 64px;
+      height: 89px;
+      border-radius: 2px;
+      margin: 0px 15px;
+   }
+
+   p{
+      font-size: 26px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 30.47px;
+      color: #293845;
+   }
+
 `;

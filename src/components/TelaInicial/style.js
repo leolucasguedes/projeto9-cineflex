@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DivCima = styled.div`
-    width: 100%;
+    width: 375px;
     height: 102px;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@ export const SelecioneH1 = styled.h1`
 `;
 
 export const Main = styled.main`
-   width: 100%;
+   width: 375px;
    height: 810px;
    display: flex;
    flex-wrap: wrap;
@@ -31,7 +31,7 @@ export const DivImagem = styled.div`
    height: 209px;
    border-radius: 3px;
    box-shadow: 0 2 4 2 #000000 10%;
-   margin: 11px 25px;
+   margin: 11px 20px;
    display: flex;
    justify-content: center;
    align-items: center;

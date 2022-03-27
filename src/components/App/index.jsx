@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<TelaInicial />}></Route>
         <Route path="/filme/:filmeId/showtimes" element={<Filme />}></Route>
-        <Route path="/sessao" element={<Sessao />}></Route>
+        <Route path="/sessao/:sessaoId/seats" element={<Sessao />}></Route>
         <Route path="/sucesso" element={<Sucesso />}></Route>
       </Routes>
     </BrowserRouter>
@@ -22,3 +22,5 @@ function App() {
 }
 
 export default App;
+
+//filme/:filmeId/showtimes/:sessaoId/seats

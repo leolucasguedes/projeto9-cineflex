@@ -3,6 +3,10 @@
 }
 
 body{
+    width: 100vw;
+    height: 100vw;
+    display: flex;
+    justify-content: center;
     background-color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
 }
