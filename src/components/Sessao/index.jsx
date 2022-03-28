@@ -12,10 +12,10 @@ import {
   Selecionado,
   Disponivel,
   Indisponivel,
+  DivTextos,
   DivInputs,
   Input,
   Reservar,
-  DivTextos,
   Footer,
 } from "./style.js";
 
@@ -27,10 +27,11 @@ function Sessao() {
   ];*/
   //let contador = 1;
   const { sessaoId } = useParams();
-  const [seats, setSeats] = useState([{ isAvaliable: false }]);
+  const [seats, setSeats] = useState([]);
   const [infos, setInfos] = useState({});
   const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
+  const [ids, setIds] = useState([]);
 
   const navigate = useNavigate();
 
@@ -48,24 +49,37 @@ function Sessao() {
   }, [sessaoId]);
 
   const { name, day, movie } = infos;
-  const { weekday } = day;
-  const { title, posterURL } = movie;
+  const weekday = day ? day.weekday : "";
+  const date = day ? day.date : "";
+  const title = movie ? movie.title : "";
+  const posterURL = movie ? movie.posterURL : "";
+
+  //console.log(day);
   const POST_URL =
     "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many";
 
   function enviarDados(event) {
     event.preventDefault();
     const promise = axios.post(POST_URL, {
-      ids: [1, 2, 3],
+      ids: ids,
       name: nome,
       cpf: cpf,
     });
     promise.then((response) => {
-      alert("Foi enviado com sucesso e alegria!");
-      navigate("/sucesso");
+      alert("Foi enviado com sucesso");
+      navigate("/sucesso", { state: { title, date, name, ids, nome, cpf } });
     });
-    promise.catch((err) => alert("deu ruim :("));
+    promise.catch((err) => alert("deu ruim"));
   }
+
+  function escolherAssento(id) {
+    if (ids.includes(id)) {
+      setIds([...ids.filter((el) => el !== id)]);
+      return;
+    }
+    setIds([...ids, id]);
+  }
+  //console.log(ids);
 
   return (
     <>
@@ -75,12 +89,15 @@ function Sessao() {
       <Main>
         <DivAssentos>
           {seats.map((seat) => {
-            const { id, name, isAvaliable } = seat;
+            const { id, name, isAvailable } = seat;
+            //console.log(id, isAvailable);
             return (
               <Assento
-                onClick={() => setSeats({ isAvaliable: true })}
-                habilitado={isAvaliable}
-                key={id + name}
+                selecionado={ids.includes(id)}
+                onClick={() => escolherAssento(id)}
+                habilitado={isAvailable}
+                key={id}
+                disabled={!isAvailable}
               >
                 <p>{name}</p>
               </Assento>
@@ -117,7 +134,7 @@ function Sessao() {
           <Reservar type="submit">Reservar assento(s)</Reservar>
         </form>
         <Footer>
-          <img src={posterURL} alt={title}></img>
+          <img src={posterURL} alt={title} />
           <h1>{title}</h1>
           <p>
             {weekday} - {name}

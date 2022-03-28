@@ -29,7 +29,7 @@ function TelaInicial() {
           const { id, title, posterURL } = filme;
           return (
             <DivImagem key={id}>
-              <Link to={`/filme/${id}/showtimes`}>
+              <Link to={`/sessoes/${id}`}>
                 <img src={posterURL} alt={title} />
               </Link>
             </DivImagem>

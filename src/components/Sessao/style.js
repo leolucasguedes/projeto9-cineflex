@@ -42,7 +42,8 @@ export const Assento = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color: ${props => props.habilitado === true ? "#C3CFD9" : "#FBE192"};
+   ${props => props.selecionado ? "background-color: #8DD7CF !important;" : "" }
+   background-color: ${props => props.habilitado ? "#C3CFD9" : "#FBE192"};
    border: solid 1px #808F9D;
    border-radius: 12px;
    margin: 18px 6px;
@@ -154,6 +155,8 @@ export const Reservar = styled.button`
    letter-spacing: 4%;
    text-align: center;
    color: #FFFFFF;
+   margin-top: 50px;
+   margin-left: 80px;
 `;
 
 export const Footer = styled.footer`

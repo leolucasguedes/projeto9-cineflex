@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { Main, DivCima, Div, Home } from "./style.js";
 
 function Sucesso() {
+  const navigate = useLocation();
+  const { state } = navigate;
+  const { title, date, name, ids, nome, cpf } = state;
+  console.log(navigate);
   return (
     <>
       <DivCima>
@@ -11,17 +15,23 @@ function Sucesso() {
       <Main>
         <Div>
           <h1>Filme e sessão</h1>
-          <p></p>
-          <p></p>
+          <p>{title}</p>
+          <p>
+            {date}-{name}
+          </p>
         </Div>
         <Div>
           <h1>Ingressos</h1>
-          <p></p>
+          {ids.map((id) => {
+            return (
+              <p>Assento {id}</p>
+            );
+          })}
         </Div>
         <Div>
           <h1>Comprador</h1>
-          <p></p>
-          <p></p>
+          <p>Nome:{nome}</p>
+          <p>CPF:{cpf}</p>
         </Div>
         <Link to={`/`}>
           <Home>Voltar para Home</Home>

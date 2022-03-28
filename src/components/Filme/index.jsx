@@ -48,7 +48,7 @@ function Filme() {
                 {showtimes.map((showtime) => {
                   const { id, name } = showtime;
                   return (
-                    <Link to={`/sessao/${id}/seats`}>
+                    <Link to={`/assentos/${id}`}>
                       <DivHorario key={id + name}>
                         <h1>{name}</h1>
                       </DivHorario>
