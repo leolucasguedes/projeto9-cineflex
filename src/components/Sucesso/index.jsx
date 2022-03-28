@@ -6,7 +6,7 @@ function Sucesso() {
   const navigate = useLocation();
   const { state } = navigate;
   const { title, date, name, ids, nome, cpf } = state;
-  console.log(navigate);
+  //console.log(navigate);
   return (
     <>
       <DivCima>
@@ -24,7 +24,7 @@ function Sucesso() {
           <h1>Ingressos</h1>
           {ids.map((id) => {
             return (
-              <p>Assento {id}</p>
+              <p key={id}>Assento {id}</p>
             );
           })}
         </Div>
