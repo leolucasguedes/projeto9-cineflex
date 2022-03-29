@@ -76,7 +76,7 @@ function Sessao() {
     if (ids.includes(id)) {
       setIds([...ids.filter((el) => el !== id)]);
       return;
-    }
+    }else if(!isAvailable) alert("Esse assento não está disponível");
     setIds([...ids, id]);
   }
   //console.log(ids);
@@ -122,6 +122,7 @@ function Sessao() {
               onChange={(e) => setNome(e.target.value)}
               value={nome}
               placeholder="Digite seu nome..."
+              required
             />
             <p>CPF do comprador:</p>
             <Input
@@ -129,6 +130,7 @@ function Sessao() {
               onChange={(e) => setCpf(e.target.value)}
               value={cpf}
               placeholder="Digite seu CPF..."
+              required
             />
           </DivInputs>
           <Reservar type="submit">Reservar assento(s)</Reservar>
